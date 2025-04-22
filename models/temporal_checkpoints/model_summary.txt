@@ -1,0 +1,39 @@
+Model: "model"
+__________________________________________________________________________________________________
+ Layer (type)                   Output Shape         Param #     Connected to                     
+==================================================================================================
+ input_1 (InputLayer)           [(None, 7, 224, 224  0           []                               
+                                , 3)]                                                             
+                                                                                                  
+ time_distributed (TimeDistribu  (None, 7, 1280)     4049571     ['input_1[0][0]']                
+ ted)                                                                                             
+                                                                                                  
+ batch_normalization (BatchNorm  (None, 7, 1280)     5120        ['time_distributed[0][0]']       
+ alization)                                                                                       
+                                                                                                  
+ bidirectional (Bidirectional)  (None, 7, 256)       1442816     ['batch_normalization[0][0]']    
+                                                                                                  
+ dense (Dense)                  (None, 7, 1)         257         ['bidirectional[0][0]']          
+                                                                                                  
+ reshape (Reshape)              (None, 7)            0           ['dense[0][0]']                  
+                                                                                                  
+ activation (Activation)        (None, 7)            0           ['reshape[0][0]']                
+                                                                                                  
+ reshape_1 (Reshape)            (None, 7, 1)         0           ['activation[0][0]']             
+                                                                                                  
+ multiply (Multiply)            (None, 7, 256)       0           ['bidirectional[0][0]',          
+                                                                  'reshape_1[0][0]']              
+                                                                                                  
+ sum_layer (SumLayer)           (None, 256)          0           ['multiply[0][0]']               
+                                                                                                  
+ dense_1 (Dense)                (None, 128)          32896       ['sum_layer[0][0]']              
+                                                                                                  
+ dropout (Dropout)              (None, 128)          0           ['dense_1[0][0]']                
+                                                                                                  
+ dense_2 (Dense)                (None, 4)            516         ['dropout[0][0]']                
+                                                                                                  
+==================================================================================================
+Total params: 5,531,176
+Trainable params: 1,479,045
+Non-trainable params: 4,052,131
+__________________________________________________________________________________________________
