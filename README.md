@@ -1,4 +1,8 @@
 # Nidra: Sleep Stage Classification with Deep Learning
+<p align="center">
+  <img src="https://github.com/devangk003/Nidra/blob/main/Nidra-logo.png" width="550" alt="Nidra-Logo">
+</p>
+
 
 Nidra is an automated sleep stage classification system that uses deep learning to analyze EEG/PSG data and classify sleep into Wake, REM, Light Sleep, and Deep Sleep stages. The model employs a temporal CNN-LSTM architecture with attention mechanisms to incorporate contextual information from surrounding epochs.
 
